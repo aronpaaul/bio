@@ -28,6 +28,8 @@ export interface Dictionary {
   ringStatus: (position: number, total: number, name: string) => string
   counterLabel: string
   counterSince: string
+  lastVisitLabel: string
+  firstVisitor: string
   badges: string[]
   emailLink: string
   lastUpdated: string

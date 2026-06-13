@@ -51,6 +51,12 @@
   padding: 0 3px;
 }
 
+.counterLast {
+  font-size: 11px;
+  color: #333333;
+  margin: 4px 0 2px;
+}
+
 .counterSince {
   font-size: 11px;
   color: #555555;

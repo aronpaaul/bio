@@ -1,12 +1,11 @@
 import { useTranslation } from '../i18n/useTranslation'
+import { useVisit } from '../hooks/useVisit'
+import { formatDateTime } from '../i18n/formatDate'
 
-interface VisitorCounterProps {
-  count: number
-}
-
-export function VisitorCounter({ count }: VisitorCounterProps) {
-  const { t } = useTranslation()
-  const digits = String(count).padStart(6, '0')
+export function VisitorCounter() {
+  const { t, language } = useTranslation()
+  const stats = useVisit()
+  const digits = String(stats?.visitors ?? 0).padStart(6, '0')
   return (
     <div className="counterBox">
       <div className="counterLabel">{t.counterLabel}</div>
@@ -16,6 +15,9 @@ export function VisitorCounter({ count }: VisitorCounterProps) {
             {digit}
           </span>
         ))}
+      </div>
+      <div className="counterLast">
+        {t.lastVisitLabel} {stats?.lastVisit ? formatDateTime(stats.lastVisit, language) : t.firstVisitor}
       </div>
       <div className="counterSince">{t.counterSince}</div>
     </div>

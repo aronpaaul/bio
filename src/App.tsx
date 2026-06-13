@@ -12,9 +12,11 @@ import { GuestbookSection } from './components/GuestbookSection'
 import { Sidebar } from './components/Sidebar'
 import { PageFooter } from './components/PageFooter'
 import { useTranslation } from './i18n/useTranslation'
+import { useAnimatedTitle } from './hooks/useAnimatedTitle'
 
 export function App() {
   const { t } = useTranslation()
+  useAnimatedTitle(t.siteTitle)
   return (
     <SiteFrame>
       <LanguagePicker />

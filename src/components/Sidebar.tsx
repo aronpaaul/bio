@@ -5,7 +5,7 @@ import { BadgeColumn } from './BadgeColumn'
 export function Sidebar() {
   return (
     <aside className="sidebar">
-      <VisitorCounter count={1337} />
+      <VisitorCounter />
       <WebRing />
       <BadgeColumn />
     </aside>
