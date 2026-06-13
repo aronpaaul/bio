@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "server": "tsx watch server/index.ts",
+    "dev:all": "node scripts/dev-all.mjs",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
