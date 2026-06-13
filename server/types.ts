@@ -14,4 +14,5 @@ export interface LikeRecord {
 export interface GuestbookDb {
   entries: Entry[]
   likes: LikeRecord[]
+  posters: string[]
 }

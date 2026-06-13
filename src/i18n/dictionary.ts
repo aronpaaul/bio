@@ -21,6 +21,11 @@ export interface Dictionary {
   formFillBoth: string
   formAccepted: string
   formFailed: string
+  formAlready: string
+  formTooFast: string
+  likeOk: string
+  likeAlready: string
+  likeFailed: string
   webRingTitle: string
   ringPrev: string
   ringRandom: string

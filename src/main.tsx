@@ -13,6 +13,7 @@ import './styles/widgets.css'
 import './styles/ring.css'
 import './styles/guestbook.css'
 import './styles/forms.css'
+import './styles/notice.css'
 import './styles/badges.css'
 import './styles/footer.css'
 

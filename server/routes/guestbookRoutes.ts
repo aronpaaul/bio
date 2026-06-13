@@ -24,7 +24,12 @@ guestbookRoutes.post('/', writeLimiter, (req, res) => {
     res.status(400).json({ error: 'Пустые поля к рассмотрению не принимаются.' })
     return
   }
-  res.status(201).json({ entry: addEntry(name, message) })
+  const entry = addEntry(clientIdFromIp(req.ip ?? 'unknown'), name, message)
+  if (!entry) {
+    res.status(409).json({ error: 'С одного адреса принимается только одна запись.' })
+    return
+  }
+  res.status(201).json({ entry })
 })
 
 guestbookRoutes.post('/:id/like', writeLimiter, (req, res) => {

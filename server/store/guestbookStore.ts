@@ -7,11 +7,11 @@ import type { Entry, GuestbookDb } from '../types'
 let db = load()
 
 function load(): GuestbookDb {
-  const data = readJson<GuestbookDb | null>(dataFile, null)
+  const data = readJson<Partial<GuestbookDb> | null>(dataFile, null)
   if (data && Array.isArray(data.entries)) {
-    return data
+    return { entries: data.entries, likes: data.likes ?? [], posters: data.posters ?? [] }
   }
-  const seeded: GuestbookDb = { entries: seedEntries(), likes: [] }
+  const seeded: GuestbookDb = { entries: seedEntries(), likes: [], posters: [] }
   writeJson(dataFile, seeded)
   return seeded
 }
@@ -22,9 +22,13 @@ export function topEntries(count: number): Entry[] {
     .slice(0, count)
 }
 
-export function addEntry(name: string, message: string): Entry {
+export function addEntry(clientId: string, name: string, message: string): Entry | null {
+  if (db.posters.includes(clientId)) {
+    return null
+  }
   const entry: Entry = { id: randomUUID(), name, message, likes: 0, createdAt: Date.now() }
   db.entries.push(entry)
+  db.posters.push(clientId)
   writeJson(dataFile, db)
   return entry
 }

@@ -3,7 +3,7 @@ import type { FormEvent } from 'react'
 import { useTranslation } from '../i18n/useTranslation'
 
 interface GuestbookFormProps {
-  onSubmit: (name: string, message: string) => Promise<void>
+  onSubmit: (name: string, message: string) => Promise<boolean>
 }
 
 export function GuestbookForm({ onSubmit }: GuestbookFormProps) {
@@ -11,24 +11,16 @@ export function GuestbookForm({ onSubmit }: GuestbookFormProps) {
   const [name, setName] = useState('')
   const [message, setMessage] = useState('')
   const [website, setWebsite] = useState('')
-  const [note, setNote] = useState('')
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()
     if (website) {
       return
     }
-    if (!name.trim() || !message.trim()) {
-      setNote(t.formFillBoth)
-      return
-    }
-    try {
-      await onSubmit(name.trim(), message.trim())
+    const accepted = await onSubmit(name, message)
+    if (accepted) {
       setName('')
       setMessage('')
-      setNote(t.formAccepted)
-    } catch {
-      setNote(t.formFailed)
     }
   }
 
@@ -62,7 +54,6 @@ export function GuestbookForm({ onSubmit }: GuestbookFormProps) {
         />
       </div>
       <button type="submit" className="navButton">{t.formSubmit}</button>
-      {note && <p className="formNote">{note}</p>}
     </form>
   )
 }

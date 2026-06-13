@@ -7,3 +7,10 @@ export interface GuestEntry {
 }
 
 export type LoadStatus = 'loading' | 'ready' | 'error'
+
+export type NoticeKind = 'ok' | 'warn' | 'error'
+
+export interface Notice {
+  text: string
+  kind: NoticeKind
+}
