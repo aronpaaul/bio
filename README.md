@@ -1,4 +1,4 @@
 # bio
 
-Это просто моё био — личная домашняя страничка в стиле 1999 года.
-React + TypeScript + Express. RU / EN / SV.
+just my personal bio — a retro homepage in 90s style.
+react + typescript + express. ru / en / sv.
