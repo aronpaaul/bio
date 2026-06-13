@@ -1,0 +1,63 @@
+.guestIntro {
+  font-size: 14px;
+  font-style: italic;
+}
+
+.guestList {
+  margin: 8px 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.guestRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background-color: #ffffcc;
+  border: 1px solid #cccc66;
+  border-left: 4px solid #ff00ff;
+  padding: 6px 8px;
+  margin: 6px 0;
+}
+
+.guestRank {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.guestBody {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.guestName {
+  display: block;
+  color: #000080;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+}
+
+.guestText {
+  font-size: 14px;
+  word-break: break-word;
+}
+
+.likeButton {
+  flex: 0 0 auto;
+  background-color: #c0c0c0;
+  border: 2px outset #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 2px 8px;
+}
+
+.likeButton:active {
+  border-style: inset;
+}
+
+.guestNote {
+  font-size: 14px;
+  font-weight: bold;
+  color: #aa0000;
+}

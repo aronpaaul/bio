@@ -1,0 +1,79 @@
+.construction {
+  margin: 10px 0;
+  text-align: center;
+}
+
+.constructionStripe {
+  height: 14px;
+  border: 1px solid #808000;
+  background-image: repeating-linear-gradient(
+    45deg,
+    #ffd400 0,
+    #ffd400 12px,
+    #000000 12px,
+    #000000 24px
+  );
+}
+
+.constructionText {
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+  font-weight: bold;
+  color: #cc0000;
+  margin: 4px 0;
+}
+
+.counterBox {
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.counterLabel {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.counterDigits {
+  display: inline-flex;
+  gap: 2px;
+  background-color: #000000;
+  border: 2px inset #808080;
+  padding: 3px;
+  margin: 4px 0;
+}
+
+.counterDigit {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+  font-weight: bold;
+  color: #00ff00;
+  background-color: #003300;
+  padding: 0 3px;
+}
+
+.counterSince {
+  font-size: 11px;
+  color: #555555;
+}
+
+.webRing {
+  border: 2px groove #c0c0c0;
+  padding: 6px;
+  margin-bottom: 14px;
+  text-align: center;
+  background-color: #eeeeff;
+}
+
+.webRingTitle {
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+  font-weight: bold;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.webRingNav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 13px;
+}

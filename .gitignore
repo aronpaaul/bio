@@ -1,0 +1,15 @@
+# Зависимости, ставятся через npm install
+node_modules
+
+# Результат сборки
+dist
+dist-ssr
+
+# Данные гостевой книги (база на диске, не для репозитория)
+server/data
+
+# Локальные файлы и мусор редактора
+*.local
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
