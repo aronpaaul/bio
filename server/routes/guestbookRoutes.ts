@@ -3,13 +3,15 @@ import { createEntrySchema } from '../validation/guestbookSchema'
 import { cleanText } from '../security/sanitize'
 import { clientIdFromIp } from '../security/clientId'
 import { writeLimiter } from '../security/rateLimiters'
-import { topEntries, addEntry, likeEntry } from '../store/guestbookStore'
-import { topCount } from '../config'
+import { pageEntries, addEntry, likeEntry } from '../store/guestbookStore'
+import { perPage } from '../config'
 
 export const guestbookRoutes = express.Router()
 
-guestbookRoutes.get('/top', (_req, res) => {
-  res.json({ entries: topEntries(topCount) })
+guestbookRoutes.get('/', (req, res) => {
+  const page = Math.max(1, Number(req.query.page) || 1)
+  const { entries, total } = pageEntries(page, perPage)
+  res.json({ entries, total, page, perPage })
 })
 
 guestbookRoutes.post('/', writeLimiter, (req, res) => {

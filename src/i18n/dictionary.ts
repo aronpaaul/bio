@@ -12,6 +12,9 @@ export interface Dictionary {
   projectsTitle: string
   guestbookTitle: string
   guestbookIntro: string
+  pagePrev: string
+  pageNext: string
+  pageStatus: (page: number, pages: number) => string
   guestEmpty: string
   guestLoading: string
   guestError: string

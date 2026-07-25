@@ -16,10 +16,10 @@ function load(): GuestbookDb {
   return seeded
 }
 
-export function topEntries(count: number): Entry[] {
-  return [...db.entries]
-    .sort((a, b) => b.likes - a.likes || b.createdAt - a.createdAt)
-    .slice(0, count)
+export function pageEntries(page: number, perPage: number): { entries: Entry[]; total: number } {
+  const sorted = [...db.entries].sort((a, b) => b.likes - a.likes || b.createdAt - a.createdAt)
+  const start = (page - 1) * perPage
+  return { entries: sorted.slice(start, start + perPage), total: sorted.length }
 }
 
 export function addEntry(clientId: string, name: string, message: string): Entry | null {

@@ -11,13 +11,19 @@ export interface LikeResult {
   likes: number
 }
 
-export async function fetchTop(): Promise<GuestEntry[]> {
-  const res = await fetch(base + '/top')
+export interface GuestPage {
+  entries: GuestEntry[]
+  total: number
+  page: number
+  perPage: number
+}
+
+export async function fetchPage(page: number): Promise<GuestPage> {
+  const res = await fetch(base + '?page=' + page)
   if (!res.ok) {
     throw new Error('Не удалось загрузить гостевую книгу')
   }
-  const data = await res.json()
-  return data.entries as GuestEntry[]
+  return res.json() as Promise<GuestPage>
 }
 
 export async function postEntry(name: string, message: string): Promise<PostResult> {

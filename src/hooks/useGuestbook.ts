@@ -1,37 +1,42 @@
 import { useEffect, useState } from 'react'
 import type { GuestEntry, LoadStatus, Notice } from '../types/guestbook'
-import { fetchTop, postEntry, likeEntry } from '../api/guestbookApi'
+import { fetchPage, postEntry, likeEntry } from '../api/guestbookApi'
 import { useTranslation } from '../i18n/useTranslation'
-
-function sortByLikes(list: GuestEntry[]): GuestEntry[] {
-  return [...list].sort((a, b) => b.likes - a.likes)
-}
 
 export function useGuestbook() {
   const { t } = useTranslation()
   const [entries, setEntries] = useState<GuestEntry[]>([])
+  const [page, setPage] = useState(1)
+  const [total, setTotal] = useState(0)
+  const [perPage, setPerPage] = useState(3)
   const [status, setStatus] = useState<LoadStatus>('loading')
   const [notice, setNotice] = useState<Notice | null>(null)
 
-  const refresh = () => {
-    fetchTop()
-      .then((list) => {
-        setEntries(list)
+  const pages = Math.max(1, Math.ceil(total / perPage))
+
+  const load = (target: number) => {
+    fetchPage(target)
+      .then((data) => {
+        setEntries(data.entries)
+        setTotal(data.total)
+        setPerPage(data.perPage)
         setStatus('ready')
       })
       .catch(() => setStatus((prev) => (prev === 'ready' ? prev : 'error')))
   }
 
   useEffect(() => {
-    refresh()
-    const timer = setInterval(refresh, 1000)
+    load(page)
+    const timer = setInterval(() => load(page), 1000)
     return () => clearInterval(timer)
-  }, [])
+  }, [page])
+
+  const goTo = (target: number) => setPage(Math.min(Math.max(1, target), pages))
 
   const like = async (id: string) => {
     try {
       const result = await likeEntry(id)
-      setEntries((prev) => sortByLikes(prev.map((item) => (item.id === id ? { ...item, likes: result.likes } : item))))
+      setEntries((prev) => prev.map((item) => (item.id === id ? { ...item, likes: result.likes } : item)))
       setNotice(result.liked ? { text: t.likeOk, kind: 'ok' } : { text: t.likeAlready, kind: 'warn' })
     } catch {
       setNotice({ text: t.likeFailed, kind: 'error' })
@@ -46,7 +51,8 @@ export function useGuestbook() {
     const result = await postEntry(name.trim(), message.trim())
     if (result.ok) {
       setNotice({ text: t.formAccepted, kind: 'ok' })
-      refresh()
+      setPage(1)
+      load(1)
       return true
     }
     const reasons = { already: t.formAlready, tooFast: t.formTooFast, failed: t.formFailed }
@@ -54,5 +60,5 @@ export function useGuestbook() {
     return false
   }
 
-  return { entries, status, notice, like, submit, dismissNotice: () => setNotice(null) }
+  return { entries, page, pages, perPage, status, notice, like, submit, goTo, dismissNotice: () => setNotice(null) }
 }
