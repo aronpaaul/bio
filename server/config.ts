@@ -4,7 +4,8 @@ import { dirname, join } from 'node:path'
 const here = dirname(fileURLToPath(import.meta.url))
 
 export const host = '127.0.0.1'
-export const port = 3001
+export const port = Number(process.env.PORT) || 3001
+export const distDir = join(here, '..', 'dist')
 export const dataFile = join(here, 'data', 'guestbook.json')
 export const visitFile = join(here, 'data', 'visits.json')
 export const challengeTtl = 30000

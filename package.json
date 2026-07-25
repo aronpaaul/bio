@@ -8,6 +8,7 @@
     "server": "tsx watch server/index.ts",
     "dev:all": "node scripts/dev-all.mjs",
     "build": "tsc && vite build",
+    "start": "tsx server/index.ts",
     "preview": "vite preview"
   },
   "dependencies": {

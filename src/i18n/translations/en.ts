@@ -5,7 +5,7 @@ export const en: Dictionary = {
   tagline: "Personal page of citizen Paul. Approved by the Ministry of Internet, 2026.",
   enterLine: "★ YOU ENTERED. THE COUNTER ALREADY LOGGED IT. ★",
   marquee: "ATTENTION CITIZEN ★ You have entered the free Internet zone ★ Sign the guestbook ★ Non-compliance results in a ban from the webring ★ Best viewed in Netscape Navigator 4.0 ★",
-  construction: "*** SITE IS 87% OPERATIONAL. THE REST — SOMEDAY ***",
+  construction: "*** SITE IS 67% OPERATIONAL. THE REST — SOMEDAY ***",
   nav: { home: "Home", about: "About", skills: "Skills", projects: "Projects", guestbook: "Guestbook" },
   aboutTitle: "About me (case file)",
   aboutIntro: "Personal record of one citizen. Full name: Pavel Vorontsov. Occupation: turning coffee into code. Will not fall asleep — or compile — without a couple of mugs. Medically confirmed.",

@@ -5,7 +5,7 @@ export function PageFooter() {
   return (
     <footer className="pageFooter">
       <p>
-        <a className="emailLink" href="mailto:paul@example.com">{t.emailLink}</a>
+        <a className="emailLink" href="https://t.me/drick" target="_blank" rel="noreferrer">{t.emailLink}</a>
       </p>
       <p className="lastUpdated">{t.lastUpdated}</p>
       <p className="copyright">{t.copyright}</p>

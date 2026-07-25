@@ -2,7 +2,7 @@ import rateLimit from 'express-rate-limit'
 
 export const apiLimiter = rateLimit({
   windowMs: 60000,
-  limit: 120,
+  limit: 600,
   standardHeaders: true,
   legacyHeaders: false,
 })

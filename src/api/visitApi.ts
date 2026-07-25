@@ -7,6 +7,14 @@ export interface VisitStats {
 
 const base = '/api/visit'
 
+export async function fetchStats(): Promise<VisitStats> {
+  const res = await fetch(base)
+  if (!res.ok) {
+    throw new Error('stats unavailable')
+  }
+  return res.json()
+}
+
 export async function registerVisit(): Promise<VisitStats> {
   const challenge = await (await fetch(base + '/challenge')).json()
   const key = await crypto.subtle.importKey('raw', fromHex(challenge.key), 'AES-GCM', false, ['encrypt'])

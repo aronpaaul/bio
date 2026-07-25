@@ -5,7 +5,7 @@ export const sv: Dictionary = {
   tagline: "Medborgaren Pauls personliga sida. Godkänd av Internetministeriet, 2026.",
   enterLine: "★ DU KOM IN. RÄKNAREN HAR REDAN NOTERAT DET. ★",
   marquee: "OBSERVERA MEDBORGARE ★ Du har gått in i den fria Internetzonen ★ Skriv i gästboken ★ Brott bestraffas med bannlysning från webbringen ★ Visas bäst i Netscape Navigator 4.0 ★",
-  construction: "*** OBJEKTET ÄR 87% FÄRDIGT. RESTEN — NÅGON GÅNG ***",
+  construction: "*** OBJEKTET ÄR 67% FÄRDIGT. RESTEN — NÅGON GÅNG ***",
   nav: { home: "Hem", about: "Om mig", skills: "Färdigheter", projects: "Projekt", guestbook: "Gästbok" },
   aboutTitle: "Om mig (akt)",
   aboutIntro: "Personakt för en medborgare. Namn: Pavel Vorontsov. Yrke: förvandlar kaffe till kod. Somnar inte — och kompilerar inte — utan ett par muggar. Medicinskt bekräftat.",

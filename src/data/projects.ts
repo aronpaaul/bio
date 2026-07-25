@@ -10,7 +10,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     name: 'WinShield',
-    href: 'https://winshield.fun',
+    href: 'https://winshield.cc/',
     description: {
       ru: 'Защита от DDoS и универсальная капча для Minecraft-серверов. Ботам тут не рады. React + Rust, кровь, пот и сегфолты.',
       en: 'DDoS protection and a universal captcha for Minecraft servers. Bots not welcome. React + Rust, blood, sweat and segfaults.',

@@ -19,10 +19,14 @@ export function useGuestbook() {
         setEntries(list)
         setStatus('ready')
       })
-      .catch(() => setStatus('error'))
+      .catch(() => setStatus((prev) => (prev === 'ready' ? prev : 'error')))
   }
 
-  useEffect(refresh, [])
+  useEffect(() => {
+    refresh()
+    const timer = setInterval(refresh, 1000)
+    return () => clearInterval(timer)
+  }, [])
 
   const like = async (id: string) => {
     try {
