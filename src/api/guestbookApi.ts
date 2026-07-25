@@ -1,4 +1,5 @@
 import type { GuestEntry } from '../types/guestbook'
+import { solve } from './proof'
 
 const base = '/api/guestbook'
 
@@ -27,10 +28,11 @@ export async function fetchPage(page: number): Promise<GuestPage> {
 }
 
 export async function postEntry(name: string, message: string): Promise<PostResult> {
+  const proof = await solve(base + '/challenge', { name, message, website: '' })
   const res = await fetch(base, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, message, website: '' }),
+    body: JSON.stringify(proof),
   })
   if (res.ok) {
     const data = await res.json()
@@ -46,7 +48,12 @@ export async function postEntry(name: string, message: string): Promise<PostResu
 }
 
 export async function likeEntry(id: string): Promise<LikeResult> {
-  const res = await fetch(base + '/' + id + '/like', { method: 'POST' })
+  const proof = await solve(base + '/challenge', { entryId: id })
+  const res = await fetch(base + '/' + id + '/like', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(proof),
+  })
   if (!res.ok) {
     throw new Error('Лайк не засчитан')
   }
