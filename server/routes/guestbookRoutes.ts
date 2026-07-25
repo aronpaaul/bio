@@ -5,6 +5,7 @@ import { clientIdFromIp } from '../security/clientId'
 import { clientMeta, badOrigin, botAgent } from '../security/clientMeta'
 import { openProof } from '../security/proof'
 import { spamReason } from '../security/spamFilter'
+import { charsetBad } from '../security/charsetGuard'
 import { writeLimiter } from '../security/rateLimiters'
 import { createChallenge } from '../visit/challengeStore'
 import { pageEntries, addEntry, likeEntry } from '../store/guestbookStore'
@@ -35,6 +36,7 @@ guestbookRoutes.post('/', writeLimiter, (req, res) => {
   if (!opened.ok) return reject(403, opened.reason)
   const fields = createEntrySchema.safeParse({ name: opened.data.name, message: opened.data.message, website: opened.data.website })
   if (!fields.success) return reject(400, 'invalid')
+  if (charsetBad(fields.data.name) || charsetBad(fields.data.message)) return reject(400, 'charset')
   const name = cleanText(fields.data.name)
   const message = cleanText(fields.data.message)
   if (!name || !message) return reject(400, 'empty')
