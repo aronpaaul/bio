@@ -13,3 +13,6 @@ server/data
 .DS_Store
 .vscode/*
 !.vscode/extensions.json
+
+# Шрифты TT Norms Pro — лицензионные, не выкладываем в публичный репозиторий (на сервер идут через rsync)
+public/fonts
