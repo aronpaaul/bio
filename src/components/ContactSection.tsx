@@ -1,5 +1,6 @@
 import { ArrowPill } from './ArrowPill'
 import { LogoIcon } from './LogoIcon'
+import { VisitCounter } from './VisitCounter'
 
 const links = [
   { label: 'GitHub', value: 'github.com/aronpaaul', href: 'https://github.com/aronpaaul' },
@@ -42,11 +43,12 @@ export function ContactSection() {
             ))}
           </ul>
         </div>
-        <div className="border-t border-black/10 dark:border-white/15 pt-8 flex items-center justify-between text-black/50 dark:text-white/50 text-sm">
+        <div className="border-t border-black/10 dark:border-white/15 pt-8 flex flex-wrap items-center justify-between gap-x-8 gap-y-4 text-black/50 dark:text-white/50 text-sm">
           <div className="flex items-center gap-2 text-black dark:text-white">
             <LogoIcon className="w-5 h-5" />
             <span className="font-medium">Paul</span>
           </div>
+          <VisitCounter />
           <span>© 2026 · paul.rip</span>
         </div>
       </div>
